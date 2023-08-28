@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/5416595.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(240, 237, 237,0.6);
+            padding: 20px;
+            border-radius: 5px;
+            width:25%;
+            
+        }
+
+        h1 {
+            
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p  {
+            color: yellow;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            width: 30%;
+            margin-right: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 85%;
+            padding: 10px;
+            margin: 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to DriveHub Car Rentals</h1>
+       <b><p>To rent a car proceed with login.</p></b>
+        <h1>Login</h1>
+        {% if error_message %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" required><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required><br>
+            <button type="submit">Login</button>
+            <a href="{% url 'register' %}">Create an account</a>
+        </form>
+    </div>
+</body>
+</html>

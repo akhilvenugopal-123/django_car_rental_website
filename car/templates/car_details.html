@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        .container {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+      
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>{{ car.name }} Details</h1>
+    <p>{{ car.description }}</p>
+    
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        {% if not message %}
+        <p>Rate per day: {{ car.daily_rate }}</p>
+        <label for="return_date">Choose return date:</label>
+        <input type="date" name="return_date" required>
+        <button type="submit">Book Now</button>
+        {% endif %}
+        <p><a href="{% url 'home' %}">Back to Home</a></p>
+    </div>
+    </form>
+    
+   
+</body>
+</html>
